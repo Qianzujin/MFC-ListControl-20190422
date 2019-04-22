@@ -356,7 +356,7 @@ void CMFCListControlDlg::OnBnClickedSave()
 			file.Write(&info, sizeof(info));
 			++i;
 		 }
-		AfxMessageBox(TEXT("数据保存成功！"));
+		AfxMessageBox(TEXT("数据保存成功"));
 		file.Close();
 	}
 
