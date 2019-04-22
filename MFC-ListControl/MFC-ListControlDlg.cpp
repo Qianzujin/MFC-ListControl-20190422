@@ -330,7 +330,7 @@ void CMFCListControlDlg::OnBnClickedSave()
 	CFile file;
 	if (!file.Open(TEXT(".\\test.dat"), CFile::modeNoTruncate | CFile::modeCreate | CFile::modeWrite))
 	{
-		AfxMessageBox(TEXT("保存文件失败！"));
+		AfxMessageBox(TEXT("保存文件失败"));
 		return;
 	}
 	else
