@@ -54,6 +54,7 @@
     <None Include="res\MFCListControl.rc2">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="test.txt" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\MFC-ListControl.ico">

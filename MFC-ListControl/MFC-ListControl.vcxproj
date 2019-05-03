@@ -207,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\MFCListControl.rc2" />
+    <None Include="test.txt" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\MFC-ListControl.ico" />

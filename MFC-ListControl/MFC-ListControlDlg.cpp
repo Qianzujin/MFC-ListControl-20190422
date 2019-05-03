@@ -328,7 +328,7 @@ void CMFCListControlDlg::OnBnClickedSave()
 	//如果要保存文件首先要打开一个文件对象
 
 	CFile file;
-	if (!file.Open(TEXT(".\\test.dat"), CFile::modeNoTruncate | CFile::modeCreate | CFile::modeWrite))
+	if (!file.Open(TEXT(".\\test.txt"), CFile::modeNoTruncate | CFile::modeCreate | CFile::modeWrite))
 	{
 		AfxMessageBox(TEXT("保存文件失败"));
 		return;
@@ -369,7 +369,7 @@ void CMFCListControlDlg::OnBnClickedLoad()
 	// TODO: 在此添加控件通知处理程序代码
 	//AfxMessageBox(_TEXT("hello"));
 	CFile file;
-	if (!file.Open(TEXT(".\\test.dat"), CFile::modeRead))
+	if (!file.Open(TEXT(".\\test.txt"), CFile::modeRead))
 	{
 		AfxMessageBox(TEXT("打开文件失败！"));
 		return;
@@ -378,6 +378,7 @@ void CMFCListControlDlg::OnBnClickedLoad()
 	int i = 0;
 	CString str;
 	SInfo info;
+	pList->DeleteAllItems();//在进行加载数据之前，对ListCtrl中所有数据进行清空操作
 	while (file.Read(&info,sizeof(info)) == sizeof(info))
 	{
 		
