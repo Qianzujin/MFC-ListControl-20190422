@@ -378,7 +378,7 @@ void CMFCListControlDlg::OnBnClickedLoad()
 	int i = 0;
 	CString str;
 	SInfo info;
-	pList->DeleteAllItems();//在进行加载数据之前，对ListCtrl中所有数据进行清空操作
+	pList->DeleteAllItems();//在进行加载数据之前，对ListCtrl中所有数据进行清空操作；
 	while (file.Read(&info,sizeof(info)) == sizeof(info))
 	{
 		
