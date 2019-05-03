@@ -328,7 +328,7 @@ void CMFCListControlDlg::OnBnClickedSave()
 	//如果要保存文件首先要打开一个文件对象
 
 	CFile file;
-	if (!file.Open(TEXT(".\\test.txt"), CFile::modeNoTruncate | CFile::modeCreate | CFile::modeWrite))
+	if (!file.Open(TEXT(".\\test.txt"), CFile::modeNoTruncate | CFile::modeCreate | CFile::modeWrite/*|CFile::typeBinary*/))
 	{
 		AfxMessageBox(TEXT("保存文件失败"));
 		return;
@@ -344,6 +344,13 @@ void CMFCListControlDlg::OnBnClickedSave()
 			此处的结构体info，如果没有进行初始化内存操作，会造成文件中存储的信息出现烫，要进行初始化内存的操作为赋值_T("")
 			另外没有被分配字节的空间会被空格代替
 			*/
+
+			//针对数据保存格式进行添加
+			if (i != 0) {
+				//如果不是第一行保存数据，则对当前指针位置向前偏移一个字节
+				file.Seek(-1, CFile::current);
+			}
+			
 			_tcscpy(info.nInt, pList->GetItemText(i, 0));
 			_tcscpy(info.sStr, pList->GetItemText(i, 1));
 			_tcscpy(info.fFlo, pList->GetItemText(i, 2));
@@ -354,6 +361,7 @@ void CMFCListControlDlg::OnBnClickedSave()
 			//info.tTime= pList->GetItemText(i, 3);
 			//_tcscpy(info.nInt, pList->GetItemText(i, 0));
 			file.Write(&info, sizeof(info));
+			file.Write("\n",2);//针对数据保存格式进行添加
 			++i;
 		 }
 		AfxMessageBox(TEXT("数据保存成功"));
@@ -387,8 +395,11 @@ void CMFCListControlDlg::OnBnClickedLoad()
 		pList->SetItemText(i, 1, info.sStr);
 		pList->SetItemText(i, 2, info.fFlo);
 		pList->SetItemText(i, 3, info.tTime);
+		//针对数据保存格式进行添加
+		file.Seek(1, CFile::current);
 		++i;
 	}
+
 	file.Close();
 
 
