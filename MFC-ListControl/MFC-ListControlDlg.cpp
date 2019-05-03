@@ -341,7 +341,7 @@ void CMFCListControlDlg::OnBnClickedSave()
 		while (i < nCount)
 		{
 			/*
-			此处的结构体info，如果没有进行初始化内存操作，会造成文件中存储的信息出现烫，要进行初始化内存的操作为赋值_T("");
+			此处的结构体info，如果没有进行初始化内存操作，会造成文件中存储的信息出现烫，要进行初始化内存的操作为赋值_T("")
 			另外没有被分配字节的空间会被空格代替
 			*/
 			_tcscpy(info.nInt, pList->GetItemText(i, 0));
